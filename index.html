@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nota Muzik Tahun 5</title>
+    <!-- Muat naik Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Fon Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Latar belakang ceria */
+        }
+        /* Sembunyikan semua seksyen kandungan secara lalai */
+        .content-section {
+            display: none;
+        }
+        /* Tunjukkan seksyen pertama secara lalai */
+        #elemen {
+            display: block;
+        }
+        /* Gaya untuk tab yang aktif */
+        .tab-active {
+            background-color: #3b82f6; /* Biru */
+            color: white;
+        }
+        /* Gaya untuk tab tidak aktif */
+        .tab-inactive {
+            background-color: #e0e7ff; /* Biru muda */
+            color: #3b82f6;
+        }
+        /* Gaya untuk butang kuiz */
+        .quiz-option {
+            transition: all 0.2s ease-in-out;
+        }
+        .quiz-option:hover {
+            transform: scale(1.03);
+            background-color: #fde68a; /* Kuning muda semasa hover */
+        }
+        .quiz-option[disabled]:hover {
+            transform: none;
+        }
+        .correct {
+            background-color: #4ade80 !important; /* Hijau */
+            color: white !important;
+        }
+        .incorrect {
+            background-color: #f87171 !important; /* Merah */
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-5xl bg-white rounded-2xl shadow-2xl overflow-hidden m-4 md:m-8">
+        
+        <!-- Header Aplikasi -->
+        <header class="p-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-md">
+            <h1 class="text-3xl md:text-4xl font-bold text-center">&#9835; Nota Ekspres Muzik Tahun 5 &#9834;</h1>
+            <p class="text-center text-indigo-100 text-lg mt-1">Persediaan UASA Anda!</p>
+        </header>
+
+        <!-- Navigasi Tab -->
+        <nav class="flex flex-wrap justify-center p-4 bg-blue-50 space-x-2 md:space-x-4">
+            <button onclick="showSection('elemen', this)" class="tab-button tab-active py-2 px-3 md:px-5 rounded-full font-semibold text-sm md:text-base shadow-sm transition-all duration-300">1. Elemen Muzik</button>
+            <button onclick="showSection('not', this)" class="tab-button tab-inactive py-2 px-3 md:px-5 rounded-full font-semibold text-sm md:text-base shadow-sm transition-all duration-300">2. Not Muzik</button>
+            <button onclick="showSection('alat', this)" class="tab-button tab-inactive py-2 px-3 md:px-5 rounded-full font-semibold text-sm md:text-base shadow-sm transition-all duration-300">3. Alat Muzik</button>
+            <button onclick="showSection('kuiz', this)" class="tab-button tab-inactive py-2 px-3 md:px-5 rounded-full font-semibold text-sm md:text-base shadow-sm transition-all duration-300 bg-yellow-300 text-yellow-800 hover:bg-yellow-400">4. Kuiz Pantas!</button>
+        </nav>
+
+        <main class="p-4 md:p-8 overflow-y-auto" style="max-height: 70vh;">
+
+            <!-- ===== 1. SEKSYEN ELEMEN MUZIK ===== -->
+            <section id="elemen" class="content-section space-y-6">
+                <h2 class="text-3xl font-bold text-indigo-700 border-b-4 border-indigo-200 pb-2">Elemen-elemen Muzik</h2>
+                <p class="text-lg text-gray-700">Ini adalah 7 elemen utama dalam muzik yang anda perlu tahu. (Berdasarkan buku teks)</p>
+                
+                <!-- Paparan Grid untuk Elemen -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    
+                    <!-- 1. Irama -->
+                    <div class="bg-indigo-50 p-5 rounded-xl shadow-lg border border-indigo-100">
+                        <h3 class="text-xl font-bold text-indigo-800">1. Irama (Detik, Meter, Tempo)</h3>
+                        <p class="mt-2 text-gray-700">Elemen yang melibatkan masa dalam muzik. Ia merangkumi pergerakan bunyi yang teratur (detik), kiraan masa dalam satu bar (meter), dan kelajuan sesebuah lagu (tempo).</p>
+                    </div>
+
+                    <!-- 2. Melodi -->
+                    <div class="bg-blue-50 p-5 rounded-xl shadow-lg border border-blue-100">
+                        <h3 class="text-xl font-bold text-blue-800">2. Melodi (Pic, Kontur, Frasa)</h3>
+                        <p class="mt-2 text-gray-700">Susunan pic tinggi dan rendah secara melintang dan membentuk kontur. Ia adalah bahagian lagu yang biasanya kita nyanyikan.</p>
+                    </div>
+
+                    <!-- 3. Warna Ton (Timbre) -->
+                    <div class="bg-teal-50 p-5 rounded-xl shadow-lg border border-teal-100">
+                        <h3 class="text-xl font-bold text-teal-800">3. Warna Ton (Timbre)</h3>
+                        <p class="mt-2 text-gray-700">Kualiti bunyi yang dihasilkan oleh pelbagai sumber yang berbeza. Contohnya, bunyi suara lelaki berbeza daripada suara perempuan, atau bunyi gitar berbeza daripada piano.</p>
+                    </div>
+
+                    <!-- 4. Bentuk (Struktur) -->
+                    <div class="bg-purple-50 p-5 rounded-xl shadow-lg border border-purple-100">
+                        <h3 class="text-xl font-bold text-purple-800">4. Bentuk (Struktur)</h3>
+                        <p class="mt-2 text-gray-700">Struktur komposisi muzik yang boleh dibahagikan kepada bahagian yang mempunyai ciri-ciri melodi tersendiri (contoh: rangkap, korus).</p>
+                    </div>
+
+                    <!-- 5. Harmoni -->
+                    <div class="bg-rose-50 p-5 rounded-xl shadow-lg border border-rose-100">
+                        <h3 class="text-xl font-bold text-rose-800">5. Harmoni (Kord, Triads)</h3>
+                        <p class="mt-2 text-gray-700">Hasil gabungan dua atau lebih pic yang disusun menegak dan dinyanyikan atau dimainkan secara serentak. Ia mewujudkan bunyi yang lebih 'penuh'.</p>
+                    </div>
+
+                    <!-- 6. Ekspresi -->
+                    <div class="bg-orange-50 p-5 rounded-xl shadow-lg border border-orange-100">
+                        <h3 class="text-xl font-bold text-orange-800">6. Ekspresi (Dinamik, Tempo, Artikulasi)</h3>
+                        <p class="mt-2 text-gray-700">Gabungan elemen dinamik (kuat/lembut), tempo (laju/perlahan) dan artikulasi (cara dimainkan) bunyi yang menghasilkan mud berbeza.</p>
+                    </div>
+
+                    <!-- 7. Tekstur -->
+                    <div class="bg-gray-100 p-5 rounded-xl shadow-lg border border-gray-200 col-span-1 md:col-span-2">
+                        <h3 class="text-xl font-bold text-gray-800">7. Tekstur (Monofoni dan Polifoni)</h3>
+                        <p class="mt-2 text-gray-700">Gabungan bunyi yang membentuk jalinan lapisan nipis dan tebal dalam muzik.
+                            <br>• <strong>Monofoni:</strong> Satu lapisan bunyi sahaja (seperti nyanyian solo tanpa iringan).
+                            <br>• <strong>Polifoni:</strong> Banyak lapisan bunyi yang berbeza dimainkan serentak.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ===== 2. SEKSYEN NOT MUZIK ===== -->
+            <section id="not" class="content-section space-y-6">
+                <h2 class="text-3xl font-bold text-teal-700 border-b-4 border-teal-200 pb-2">Not Muzik dan Tanda Rehat</h2>
+                <p class="text-lg text-gray-700">Mari kenali nama, bentuk, dan nilai (kiraan) bagi setiap not dan tanda rehat.</p>
+                
+                <!-- Jadual Not Muzik -->
+                <div class="overflow-x-auto bg-white rounded-lg shadow-lg">
+                    <table class="w-full text-left table-auto">
+                        <thead class="bg-teal-100">
+                            <tr>
+                                <th class="p-4 font-bold text-teal-800">Bentuk Not</th>
+                                <th class="p-4 font-bold text-teal-800">Nama Not</th>
+                                <th class="p-4 font-bold text-teal-800">Bentuk Tanda Rehat</th>
+                                <th class="p-4 font-bold text-teal-800">Nilai / Kiraan</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50">
+                                <td class="p-4 text-4xl">Semibref</td>
+                                <td class="p-4 text-lg font-semibold">Semibref</td>
+                                <td class="p-4 text-4xl">Rehat Semibref</td>
+                                <td class="p-4 text-lg font-bold">4</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="p-4 text-4xl">Minim</td>
+                                <td class="p-4 text-lg font-semibold">Minim</td>
+                                <td class="p-4 text-4xl">Rehat Minim</td>
+                                <td class="p-4 text-lg font-bold">2</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="p-4 text-4xl">Krocet</td>
+                                <td class="p-4 text-lg font-semibold">Krocet</td>
+                                <td class="p-4 text-4xl">Rehat Krocet</td>
+                                <td class="p-4 text-lg font-bold">1</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="p-4 text-4xl">Kuaver</td>
+                                <td class="p-4 text-lg font-semibold">Kuaver</td>
+                                <td class_l="p-4 text-4xl">Rehat Kuaver</td>
+                                <td class_l="p-4 text-lg font-bold">1/2 (setengah)</td>
+                            </tr>
+                            <tr class_l="hover:bg-gray-50">
+                                <td_l="p-4 text-4xl">Semikuaver</td>
+                                <td_l="p-4 text-lg font-semibold">Semikuaver</td>
+                                <td_l="p-4 text-4xl">Rehat Semikuaver</td>
+                                <td_l="p-4 text-lg font-bold">1/4 (suku)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Video YouTube -->
+                <h3 class="text-2xl font-bold text-teal-700 pt-4">Video: Nama dan Nilai Not Muzik</h3>
+                <div class="aspect-w-16 aspect-h-9 bg-black rounded-lg shadow-lg overflow-hidden">
+                    <iframe 
+                        class="w-full h-full"
+                        src="https://www.youtube.com/embed/4lpjyqjRUQg" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </section>
+
+            <!-- ===== 3. SEKSYEN ALAT MUZIK ===== -->
+            <section id="alat" class="content-section space-y-6">
+                <h2 class="text-3xl font-bold text-rose-700 border-b-4 border-rose-200 pb-2">Alat-alat Muzik Tradisional Malaysia</h2>
+                <p class="text-lg text-gray-700">Kenali pelbagai alat muzik unik dari pelbagai kaum di Malaysia. Ia terbahagi kepada beberapa kategori utama.</p>
+
+                <!-- Kategori: Bertali -->
+                <h3 class="text-2xl font-bold text-gray-800">Kategori: Alat Bertali (Dipetik/Digesek)</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- Sape -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://ecentral.my/wp-content/uploads/2024/11/Sape.jpeg" alt="Sape" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/efefef/333?text=Sape'">
+                        <div class="p-5">
+                            <h4 class="text-xl font-bold text-rose-800">Sape</h4>
+                            <p class="mt-2 text-gray-600">Alat muzik tradisional suku kaum Dayak di Kalimantan. Dimainkan seperti gitar tetapi tidak guna pemetik, hanya jari.</p>
+                        </div>
+                    </div>
+                    <!-- Rebab -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://ecentral.my/wp-content/uploads/2024/11/Rebab-1024x768.webp" alt="Rebab" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/efefef/333?text=Rebab'">
+                        <div class="p-5">
+                            <h4 class="text-xl font-bold text-rose-800">Rebab</h4>
+                            <p class="mt-2 text-gray-600">Salah satu alat muzik tertua di Malaysia. Dimainkan dengan cara digesek. Digunakan dalam persembahan Mak Yong dan Main Puteri.</p>
+                        </div>
+                    </div>
+                    <!-- Gambus -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://ecentral.my/wp-content/uploads/2024/11/Gambus.webp" alt="Gambus" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/efefef/333?text=Gambus'">
+                        <div class="p-5">
+                            <h4 class="text-xl font-bold text-rose-800">Gambus</h4>
+                            <p class="mt-2 text-gray-600">Berasal dari Timur Tengah, berbentuk seperti buah pear dibelah dua. Dimainkan secara dipetik dan popular dalam muzik Ghazal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kategori: Tiupan -->
+                <h3 class="text-2xl font-bold text-gray-800 pt-4">Kategori: Alat Tiupan</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- Seruling -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://ecentral.my/wp-content/uploads/2024/11/Seruling.jpeg" alt="Seruling" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/efefef/333?text=Seruling'">
+                        <div class="p-5">
+                            <h4 class="text-xl font-bold text-blue-800">Seruling</h4>
+                            <p class="mt-2 text-gray-600">Diperbuat daripada buluh, mengeluarkan bunyi daripada aliran udara. Kini ada juga diperbuat daripada logam atau PVC.</p>
+                        </div>
+                    </div>
+                    <!-- Nafiri -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://ecentral.my/wp-content/uploads/2024/11/Nafiri-1.jpeg" alt="Nafiri" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/efefef/333?text=Nafiri'">
+                        <div class="p-5">
+                            <h4 class="text-xl font-bold text-blue-800">Nafiri</h4>
+                            <p class="mt-2 text-gray-600">Sejenis alat tiupan 'horn' dari perak. Digunakan dalam muzik Nobat untuk istiadat diraja (cth: pertabalan Sultan).</p>
+                        </div>
+                    </div>
+                    <!-- Sompoton -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://ecentral.my/wp-content/uploads/2024/11/Sompoton-.jpeg" alt="Sompoton" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/efefef/333?text=Sompoton'">
+                        <div class="p-5">
+                            <h4 class="text-xl font-bold text-blue-800">Sompoton</h4>
+                            <p class="mt-2 text-gray-600">Popular di Sabah (Kadazandusun). Diperbuat daripada labu kering dan lapan laras buluh sumbiling.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kategori: Perkusi -->
+                <h3 class="text-2xl font-bold text-gray-800 pt-4">Kategori: Alat Perkusi (Dipukul/Dipalu/Digoncang)</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- Gong -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://ecentral.my/wp-content/uploads/2024/11/Gong.jpeg" alt="Gong" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/efefef/333?text=Gong'">
+                        <div class="p-5">
+                            <h4 class="text-xl font-bold text-green-800">Gong</h4>
+                            <p class="mt-2 text-gray-600">Terkenal di Sabah. Diperbuat daripada besi atau gangsa. Digunakan dalam pelbagai persembahan tradisi seperti Mak Yong.</p>
+                        </div>
+                    </div>
+                    <!-- Kompang -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://ecentral.my/wp-content/uploads/2024/11/Kompang-1.jpeg" alt="Kompang" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/efefef/333?text=Kompang'">
+                        <div class="p-5">
+                            <h4 class="text-xl font-bold text-green-800">Kompang</h4>
+                            <p class="mt-2 text-gray-600">Sangat popular dalam masyarakat Melayu. Bingkai kayu (nangka) dan kulit kambing. Dimainkan untuk perarakan dan majlis perkahwinan.</p>
+                        </div>
+                    </div>
+                    <!-- Rebana -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://ecentral.my/wp-content/uploads/2024/11/Rebana.jpeg" alt="Rebana" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/efefef/333?text=Rebana'">
+                        <div class="p-5">
+                            <h4 class="text-xl font-bold text-green-800">Rebana</h4>
+                            <p class="mt-2 text-gray-600">Alat gendang tradisi Melayu. Kerangka bulat dan ditutup kulit binatang. Dipukul dengan tapak tangan.</p>
+                        </div>
+                    </div>
+                    <!-- Gedombak -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://ecentral.my/wp-content/uploads/2024/11/Gedombak.jpeg" alt="Gedombak" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/efefef/333?text=Gedombak'">
+                        <div class="p-5">
+                            <h4 class="text-xl font-bold text-green-800">Gedombak</h4>
+                            <p class="mt-2 text-gray-600">Sejenis gendang yang dipalu. Hanya satu permukaan ditutup dengan belulang (kulit) haiwan, satu lagi terbuka.</p>
+                        </div>
+                    </div>
+                    <!-- Tabla -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://ecentral.my/wp-content/uploads/2024/11/Tabla.jpeg" alt="Tabla" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/efefef/333?text=Tabla'">
+                        <div class="p-5">
+                            <h4 class="text-xl font-bold text-green-800">Tabla</h4>
+                            <p class="mt-2 text-gray-600">Terkenal dalam masyarakat India. Sepasang gendang (Sidda kecil, Dagga besar). Digunakan dalam upacara keagamaan atau persembahan tarian.</p>
+                        </div>
+                    </div>
+                    <!-- Bo -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://ecentral.my/wp-content/uploads/2024/11/Bo.jpeg" alt="Bo" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/efefef/333?text=Bo'">
+                        <div class="p-5">
+                            <h4 class="text-xl font-bold text-green-800">Bo (Po)</h4>
+                            <p class="mt-2 text-gray-600">Sepasang piring bulat (simbal) daripada gangsa. Popular dalam masyarakat Cina, sering digunakan untuk menghalau hantu (bunyi kuat).</p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ===== 4. SEKSYEN KUIZ ===== -->
+            <section id="kuiz" class="content-section space-y-6">
+                <h2 class="text-3xl font-bold text-yellow-700 border-b-4 border-yellow-300 pb-2">Kuiz Pantas Uji Minda!</h2>
+                
+                <!-- Skrin Permulaan Kuiz -->
+                <div id="quizStart" class="text-center p-6 bg-yellow-50 rounded-lg shadow-md">
+                    <p class="text-lg text-gray-700 mb-6">Anda akan diuji dengan 30 soalan rawak berdasarkan semua nota tadi. Bersedia?</p>
+                    <button onclick="startQuiz()" class="bg-yellow-400 text-yellow-900 font-bold py-3 px-8 rounded-full shadow-lg text-xl hover:bg-yellow-500 transition-all duration-300 transform hover:scale-105">
+                        Mula Kuiz!
+                    </button>
+                </div>
+
+                <!-- Skrin Kuiz Utama (Sembunyi) -->
+                <div id="quizContainer" class="hidden space-y-5">
+                    <div class="flex justify-between items-center font-semibold">
+                        <span id="questionCount" class="text-lg text-indigo-700">Soalan 1 dari 30</span>
+                        <span id="currentScore" class="text-lg text-green-700">Markah: 0</span>
+                    </div>
+                    <!-- Imej Soalan (jika ada) -->
+                    <img id="quizImage" src="" alt="Soalan bergambar" class="w-full max-w-md mx-auto rounded-lg shadow-md mb-4 hidden" onerror="this.style.display='none'">
+                    
+                    <h3 id="quizQuestion" class="text-2xl font-bold text-gray-900 text-center min-h-[60px]"></h3>
+                    
+                    <div id="quizOptions" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Pilihan jawapan akan dijana oleh JS -->
+                    </div>
+
+                    <div id="feedback" class="text-center font-semibold text-lg mt-4"></div>
+
+                    <button id="nextButton" onclick="nextQuestion()" class="w-full bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-indigo-700 transition-all duration-300 hidden">
+                        Soalan Seterusnya &rarr;
+                    </button>
+                </div>
+
+                <!-- Skrin Keputusan (Sembunyi) -->
+                <div id="quizResults" class="hidden text-center p-8 bg-green-50 rounded-lg shadow-md">
+                    <h3 class="text-3xl font-bold text-green-800">Tahniah! Kuiz Selesai!</h3>
+                    <p class="text-5xl font-extrabold text-green-600 my-6" id="finalScore"></p>
+                    <p class="text-lg text-gray-700 mb-8" id="scoreMessage"></p>
+                    <button onclick="startQuiz()" class="bg-green-500 text-white font-bold py-3 px-8 rounded-full shadow-lg text-xl hover:bg-green-600 transition-all duration-300 transform hover:scale-105">
+                        Cuba Lagi!
+                    </button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // ===== FUNGSI NAVIGASI TAB =====
+        
+        // Simpan tab aktif
+        let activeTab = document.querySelector('.tab-active');
+
+        function showSection(sectionId, clickedButton) {
+            // Sembunyikan semua seksyen
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Tunjukkan seksyen yang dipilih
+            document.getElementById(sectionId).style.display = 'block';
+
+            // Kemas kini gaya tab
+            if (activeTab) {
+                activeTab.classList.remove('tab-active');
+                activeTab.classList.add('tab-inactive');
+                // Urus gaya khas untuk tab kuiz
+                if (activeTab.textContent.includes('Kuiz')) {
+                    activeTab.classList.add('bg-yellow-300', 'text-yellow-800', 'hover:bg-yellow-400');
+                }
+            }
+            
+            clickedButton.classList.remove('tab-inactive');
+            clickedButton.classList.add('tab-active');
+            // Urus gaya khas untuk tab kuiz
+            if (clickedButton.textContent.includes('Kuiz')) {
+                clickedButton.classList.remove('bg-yellow-300', 'text-yellow-800', 'hover:bg-yellow-400');
+            }
+
+            activeTab = clickedButton;
+        }
+
+        // ===== LOGIK KUIZ =====
+
+        const quizStartDiv = document.getElementById('quizStart');
+        const quizContainerDiv = document.getElementById('quizContainer');
+        const quizResultsDiv = document.getElementById('quizResults');
+        const questionCountSpan = document.getElementById('questionCount');
+        const currentScoreSpan = document.getElementById('currentScore');
+        const quizImage = document.getElementById('quizImage');
+        const quizQuestionH3 = document.getElementById('quizQuestion');
+        const quizOptionsDiv = document.getElementById('quizOptions');
+        const feedbackDiv = document.getElementById('feedback');
+        const nextButton = document.getElementById('nextButton');
+        const finalScoreP = document.getElementById('finalScore');
+        const scoreMessageP = document.getElementById('scoreMessage');
+
+        let allQuestions = [];
+        let shuffledQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        // --- Bank Soalan (30 Soalan) ---
+        function setupQuestions() {
+            allQuestions = [
+                // Elemen Muzik (10 soalan)
+                {
+                    question: "Elemen yang melibatkan MASA dalam muzik (detik, meter, tempo) dipanggil...",
+                    options: ["Irama", "Melodi", "Harmoni", "Bentuk"],
+                    answer: "Irama"
+                },
+                {
+                    question: "Susunan pic tinggi dan rendah secara melintang dipanggil...",
+                    options: ["Melodi", "Tekstur", "Ekspresi", "Warna Ton"],
+                    answer: "Melodi"
+                },
+                {
+                    question: "Kualiti bunyi yang berbeza (contoh: suara lelaki dan perempuan) merujuk kepada...",
+                    options: ["Warna Ton", "Harmoni", "Irama", "Dinamik"],
+                    answer: "Warna Ton"
+                },
+                {
+                    question: "Struktur lagu seperti 'rangkap' dan 'korus' adalah sebahagian daripada elemen...",
+                    options: ["Bentuk", "Melodi", "Tekstur", "Irama"],
+                    answer: "Bentuk"
+                },
+                {
+                    question: "Gabungan dua atau lebih pic yang dimainkan serentak (kord) dipanggil...",
+                    options: ["Harmoni", "Melodi", "Polifoni", "Warna Ton"],
+                    answer: "Harmoni"
+                },
+                {
+                    question: "Gabungan dinamik (kuat/lembut) dan tempo (laju/perlahan) yang menghasilkan 'mud' dipanggil...",
+                    options: ["Ekspresi", "Bentuk", "Irama", "Harmoni"],
+                    answer: "Ekspresi"
+                },
+                {
+                    question: "Satu lapisan bunyi sahaja (nyanyian solo tanpa iringan) mempunyai tekstur...",
+                    options: ["Monofoni", "Polifoni", "Harmoni", "Dinamik"],
+                    answer: "Monofoni"
+                },
+                {
+                    question: "Banyak lapisan bunyi yang berbeza dimainkan serentak mempunyai tekstur...",
+                    options: ["Polifoni", "Monofoni", "Tempo", "Meter"],
+                    answer: "Polifoni"
+                },
+                {
+                    question: "Apakah maksud 'Tempo' dalam elemen Irama?",
+                    options: ["Kelajuan lagu", "Kekuatan bunyi", "Struktur lagu", "Jenis kord"],
+                    answer: "Kelajuan lagu"
+                },
+                {
+                    question: "Apakah maksud 'Dinamik' dalam elemen Ekspresi?",
+                    options: ["Kekuatan atau kelantangan bunyi (kuat/lembut)", "Kelajuan lagu (laju/perlahan)", "Gabungan 3 not", "Kualiti bunyi"],
+                    answer: "Kekuatan atau kelantangan bunyi (kuat/lembut)"
+                },
+                
+                // Not Muzik (8 soalan)
+                {
+                    question: "Berapakah nilai (kiraan) untuk not Semibref?",
+                    options: ["4", "2", "1", "1/2"],
+                    answer: "4"
+                },
+                {
+                    question: "Berapakah nilai (kiraan) untuk not Minim?",
+                    options: ["2", "4", "1", "1/2"],
+                    answer: "2"
+                },
+                {
+                    question: "Not ini dipanggil Krocet. Berapakah nilainya?",
+                    options: ["1", "2", "4", "1/2"],
+                    answer: "1"
+                },
+                {
+                    question: "Not yang bernilai setengah (1/2) dipanggil...",
+                    options: ["Kuaver", "Krocet", "Minim", "Semikuaver"],
+                    answer: "Kuaver"
+                },
+                {
+                    question: "Not yang bernilai suku (1/4) dipanggil...",
+                    options: ["Semikuaver", "Kuaver", "Krocet", "Minim"],
+                    answer: "Semikuaver"
+                },
+                {
+                    question: "Dua not Kuaver bersamaan dengan nilai satu not...",
+                    options: ["Krocet", "Minim", "Semibref", "Semikuaver"],
+                    answer: "Krocet"
+                },
+                {
+                    question: "Tanda rehat ini dipanggil Rehat Krocet. Berapa lama kita perlu senyap?",
+                    options: ["1 kiraan", "2 kiraan", "4 kiraan", "Setengah kiraan"],
+                    answer: "1 kiraan"
+                },
+                {
+                    question: "Tanda rehat ini (Rehat Minim) bernilai...",
+                    options: ["2 kiraan", "1 kiraan", "4 kiraan", "Setengah kiraan"],
+                    answer: "2 kiraan"
+                },
+
+                // Alat Muzik (12 soalan, menggunakan imej)
+                {
+                    question: "Namakan alat muzik dalam gambar ini.",
+                    options: ["Sape", "Gambus", "Rebab", "Gitar"],
+                    answer: "Sape",
+                    image: "https://ecentral.my/wp-content/uploads/2024/11/Sape.jpeg"
+                },
+                {
+                    question: "Alat muzik ini dimainkan dalam persembahan Mak Yong. Apakah namanya?",
+                    options: ["Gong", "Kompang", "Rebana", "Bo"],
+                    answer: "Gong",
+                    image: "https://ecentral.my/wp-content/uploads/2024/11/Gong.jpeg"
+                },
+                {
+                    question: "Namakan alat muzik ini. Ia hanya mempunyai satu permukaan kulit.",
+                    options: ["Gedombak", "Tabla", "Kompang", "Rebana"],
+                    answer: "Gedombak",
+                    image: "https://ecentral.my/wp-content/uploads/2024/11/Gedombak.jpeg"
+                },
+                {
+                    question: "Alat muzik dari Sabah ini diperbuat daripada labu kering. Namanya ialah...",
+                    options: ["Sompoton", "Seruling", "Nafiri", "Rebab"],
+                    answer: "Sompoton",
+                    image: "https://ecentral.my/wp-content/uploads/2024/11/Sompoton-.jpeg"
+                },
+                {
+                    question: "Alat muzik tiupan ini diperbuat daripada buluh.",
+                    options: ["Seruling", "Nafiri", "Sompoton", "Sape"],
+                    answer: "Seruling",
+                    image: "https://ecentral.my/wp-content/uploads/2024/11/Seruling.jpeg"
+                },
+                {
+                    question: "Alat muzik kaum India ini dimainkan sepasang. Apakah namanya?",
+                    options: ["Tabla", "Gedombak", "Kompang", "Rebana"],
+                    answer: "Tabla",
+                    image: "https://ecentral.my/wp-content/uploads/2024/11/Tabla.jpeg"
+                },
+                {
+                    question: "Sepasang simbal ini popular dalam masyarakat Cina. Namanya ialah...",
+                    options: ["Bo", "Gong", "Kompang", "Canang"],
+                    answer: "Bo",
+                    image: "https://ecentral.my/wp-content/uploads/2024/11/Bo.jpeg"
+                },
+                {
+                    question: "Alat muzik ini sangat popular di majlis perkahwinan Melayu.",
+                    options: ["Kompang", "Rebana", "Tabla", "Gedombak"],
+                    answer: "Kompang",
+                    image: "https://ecentral.my/wp-content/uploads/2024/11/Kompang-1.jpeg"
+                },
+                {
+                    question: "Alat tiupan ini digunakan dalam muzik Nobat Diraja.",
+                    options: ["Nafiri", "Seruling", "Sompoton", "Terompet"],
+                    answer: "Nafiri",
+                    image: "https://ecentral.my/wp-content/uploads/2024/11/Nafiri-1.jpeg"
+                },
+                {
+                    question: "Alat muzik ini dimainkan secara digesek. Apakah namanya?",
+                    options: ["Rebab", "Sape", "Gambus", "Biola"],
+                    answer: "Rebab",
+                    image: "https://ecentral.my/wp-content/uploads/2024/11/Rebab-1024x768.webp"
+                },
+                {
+                    question: "Alat muzik yang berasal dari Timur Tengah ini dipanggil...",
+                    options: ["Gambus", "Sape", "Rebab", "Kecapi"],
+                    answer: "Gambus",
+                    image: "https://ecentral.my/wp-content/uploads/2024/11/Gambus.webp"
+                },
+                {
+                    question: "Alat gendang besar ini dipukul dengan tapak tangan.",
+                    options: ["Rebana", "Kompang", "Gedombak", "Tabla"],
+                    answer: "Rebana",
+                    image: "https://ecentral.my/wp-content/uploads/2024/11/Rebana.jpeg"
+                }
+            ];
+        }
+
+        // Fungsi untuk rawak susunan array
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Fungsi mula kuiz
+        function startQuiz() {
+            setupQuestions(); // Pastikan bank soalan segar setiap kali mula
+            shuffledQuestions = shuffleArray([...allQuestions]).slice(0, 30); // Ambil 30 soalan rawak
+            currentQuestionIndex = 0;
+            score = 0;
+
+            quizStartDiv.style.display = 'none';
+            quizResultsDiv.style.display = 'none';
+            quizContainerDiv.style.display = 'block';
+
+            loadQuestion();
+        }
+
+        // Fungsi muat soalan
+        function loadQuestion() {
+            // Bersihkan keadaan sebelumnya
+            quizOptionsDiv.innerHTML = '';
+            feedbackDiv.textContent = '';
+            nextButton.style.display = 'none';
+            quizImage.style.display = 'none';
+
+            // Dapatkan data soalan semasa
+            const questionData = shuffledQuestions[currentQuestionIndex];
+
+            // Papar nombor soalan dan markah
+            questionCountSpan.textContent = `Soalan ${currentQuestionIndex + 1} dari 30`;
+            currentScoreSpan.textContent = `Markah: ${score}`;
+
+            // Papar soalan
+            quizQuestionH3.textContent = questionData.question;
+
+            // Papar imej jika ada
+            if (questionData.image) {
+                quizImage.src = questionData.image;
+                quizImage.style.display = 'block';
+            }
+
+            // Rawakkan pilihan jawapan
+            const shuffledOptions = shuffleArray([...questionData.options]);
+
+            // Cipta butang pilihan jawapan
+            shuffledOptions.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.classList.add('quiz-option', 'w-full', 'bg-white', 'border-2', 'border-indigo-300', 'text-indigo-800', 'font-semibold', 'p-4', 'rounded-lg', 'shadow-sm', 'hover:bg-indigo-50');
+                button.onclick = () => selectAnswer(option, questionData.answer, button);
+                quizOptionsDiv.appendChild(button);
+            });
+        }
+
+        // Fungsi pilih jawapan
+        function selectAnswer(selectedOption, correctAnswer, clickedButton) {
+            // Matikan semua butang
+            const allOptionButtons = quizOptionsDiv.querySelectorAll('button');
+            allOptionButtons.forEach(btn => {
+                btn.disabled = true;
+                // Tunjukkan jawapan betul
+                if (btn.textContent === correctAnswer) {
+                    btn.classList.add('correct');
+                }
+            });
+
+            // Semak jawapan
+            if (selectedOption === correctAnswer) {
+                score++;
+                feedbackDiv.textContent = 'Betul! Tahniah!';
+                feedbackDiv.classList.add('text-green-600');
+                feedbackDiv.classList.remove('text-red-600');
+            } else {
+                clickedButton.classList.add('incorrect');
+                feedbackDiv.textContent = `Salah. Jawapan yang betul ialah: ${correctAnswer}`;
+                feedbackDiv.classList.add('text-red-600');
+                feedbackDiv.classList.remove('text-green-600');
+            }
+
+            // Kemas kini markah semasa
+            currentScoreSpan.textContent = `Markah: ${score}`;
+            
+            // Tunjukkan butang "Seterusnya"
+            nextButton.style.display = 'block';
+        }
+
+        // Fungsi soalan seterusnya
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < shuffledQuestions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Fungsi papar keputusan
+        function showResults() {
+            quizContainerDiv.style.display = 'none';
+            quizResultsDiv.style.display = 'block';
+
+            finalScoreP.textContent = `${score} / 30`;
+            
+            let message = "";
+            const percentage = (score / 30) * 100;
+            if (percentage >= 80) {
+                message = "Cemerlang! Anda memang pakar muzik!";
+            } else if (percentage >= 60) {
+                message = "Bagus! Teruskan usaha lagi sikit!";
+            } else if (percentage >= 40) {
+                message = "Baik. Boleh cuba ulangkaji nota dan cuba lagi.";
+            } else {
+                message = "Jangan putus asa. Ulangkaji nota dan cuba sekali lagi!";
+            }
+            scoreMessageP.textContent = message;
+        }
+
+    </script>
+</body>
+</html>
