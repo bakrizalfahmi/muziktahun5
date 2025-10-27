@@ -39,151 +39,232 @@
             transform: scale(1.03);
             background-color: #fde68a; /* Kuning muda semasa hover */
         }
-        .quiz-option[disabled]:hover {
-            transform: none;
-        }
-        .correct {
-            background-color: #4ade80 !important; /* Hijau */
-            color: white !important;
-        }
-        .incorrect {
-            background-color: #f87171 !important; /* Merah */
-            color: white !important;
+        /* Sembunyikan butang radio asal */
+        .quiz-radio {
+            display: none;
         }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
+<body class="bg-gray-100">
 
-    <div class="w-full max-w-5xl bg-white rounded-2xl shadow-2xl overflow-hidden m-4 md:m-8">
+    <!-- Mengeluarkan bekas "max-w-5xl" dan bayang-bayang untuk memenuhi skrin -->
+    <div class="w-full bg-white min-h-screen">
         
         <!-- Header Aplikasi -->
-        <header class="p-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-md">
+        <header class="p-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-md sticky top-0 z-10">
             <h1 class="text-3xl md:text-4xl font-bold text-center">&#9835; Nota Ekspres Muzik Tahun 5 &#9834;</h1>
             <p class="text-center text-indigo-100 text-lg mt-1">Persediaan UASA Anda!</p>
         </header>
 
         <!-- Navigasi Tab -->
-        <nav class="flex flex-wrap justify-center p-4 bg-blue-50 space-x-2 md:space-x-4">
+        <nav class="flex flex-wrap justify-center p-4 bg-blue-50 space-x-2 md:space-x-4 sticky top-[108px] md:top-[124px] z-10 shadow-sm">
             <button onclick="showSection('elemen', this)" class="tab-button tab-active py-2 px-3 md:px-5 rounded-full font-semibold text-sm md:text-base shadow-sm transition-all duration-300">1. Elemen Muzik</button>
             <button onclick="showSection('not', this)" class="tab-button tab-inactive py-2 px-3 md:px-5 rounded-full font-semibold text-sm md:text-base shadow-sm transition-all duration-300">2. Not Muzik</button>
             <button onclick="showSection('alat', this)" class="tab-button tab-inactive py-2 px-3 md:px-5 rounded-full font-semibold text-sm md:text-base shadow-sm transition-all duration-300">3. Alat Muzik</button>
             <button onclick="showSection('kuiz', this)" class="tab-button tab-inactive py-2 px-3 md:px-5 rounded-full font-semibold text-sm md:text-base shadow-sm transition-all duration-300 bg-yellow-300 text-yellow-800 hover:bg-yellow-400">4. Kuiz Pantas!</button>
         </nav>
 
-        <main class="p-4 md:p-8 overflow-y-auto" style="max-height: 70vh;">
+        <!-- Mengubah 'main' untuk membenarkan skrol penuh -->
+        <main class="p-4 md:p-8">
 
-            <!-- ===== 1. SEKSYEN ELEMEN MUZIK ===== -->
+            <!-- ===== 1. SEKSYEN ELEMEN MUZIK (Gaya Senarai) ===== -->
             <section id="elemen" class="content-section space-y-6">
                 <h2 class="text-3xl font-bold text-indigo-700 border-b-4 border-indigo-200 pb-2">Elemen-elemen Muzik</h2>
                 <p class="text-lg text-gray-700">Ini adalah 7 elemen utama dalam muzik yang anda perlu tahu. (Berdasarkan buku teks)</p>
                 
-                <!-- Paparan Grid untuk Elemen -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <!-- Paparan Senarai (Bullet Style) untuk Elemen -->
+                <ul class="space-y-4">
                     
                     <!-- 1. Irama -->
-                    <div class="bg-indigo-50 p-5 rounded-xl shadow-lg border border-indigo-100">
-                        <h3 class="text-xl font-bold text-indigo-800">1. Irama (Detik, Meter, Tempo)</h3>
-                        <p class="mt-2 text-gray-700">Elemen yang melibatkan masa dalam muzik. Ia merangkumi pergerakan bunyi yang teratur (detik), kiraan masa dalam satu bar (meter), dan kelajuan sesebuah lagu (tempo).</p>
-                    </div>
+                    <li class="bg-indigo-50 p-5 rounded-xl shadow-lg border border-indigo-100">
+                        <h3 class="text-xl font-bold text-indigo-800">1. Irama</h3>
+                        <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1 text-lg">
+                            <li>Elemen yang melibatkan <strong>masa</strong> dalam muzik.</li>
+                            <li>Merangkumi: <strong>Detik</strong> (pergerakan bunyi teratur), <strong>Meter</strong> (kiraan masa dalam bar), dan <strong>Tempo</strong> (kelajuan lagu).</li>
+                        </ul>
+                    </li>
 
                     <!-- 2. Melodi -->
-                    <div class="bg-blue-50 p-5 rounded-xl shadow-lg border border-blue-100">
-                        <h3 class="text-xl font-bold text-blue-800">2. Melodi (Pic, Kontur, Frasa)</h3>
-                        <p class="mt-2 text-gray-700">Susunan pic tinggi dan rendah secara melintang dan membentuk kontur. Ia adalah bahagian lagu yang biasanya kita nyanyikan.</p>
-                    </div>
+                    <li class="bg-blue-50 p-5 rounded-xl shadow-lg border border-blue-100">
+                        <h3 class="text-xl font-bold text-blue-800">2. Melodi</h3>
+                        <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1 text-lg">
+                            <li>Susunan <strong>pic tinggi dan rendah</strong> secara melintang.</li>
+                            <li>Membentuk <strong>kontur</strong> dan <strong>frasa</strong> (bahagian lagu yang kita nyanyikan).</li>
+                        </ul>
+                    </li>
 
                     <!-- 3. Warna Ton (Timbre) -->
-                    <div class="bg-teal-50 p-5 rounded-xl shadow-lg border border-teal-100">
+                    <li class="bg-teal-50 p-5 rounded-xl shadow-lg border border-teal-100">
                         <h3 class="text-xl font-bold text-teal-800">3. Warna Ton (Timbre)</h3>
-                        <p class="mt-2 text-gray-700">Kualiti bunyi yang dihasilkan oleh pelbagai sumber yang berbeza. Contohnya, bunyi suara lelaki berbeza daripada suara perempuan, atau bunyi gitar berbeza daripada piano.</p>
-                    </div>
+                        <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1 text-lg">
+                            <li><strong>Kualiti bunyi</strong> yang dihasilkan oleh pelbagai sumber yang berbeza.</li>
+                            <li>Contoh: Bunyi gitar berbeza daripada piano; suara lelaki berbeza daripada suara perempuan.</li>
+                        </ul>
+                    </li>
 
                     <!-- 4. Bentuk (Struktur) -->
-                    <div class="bg-purple-50 p-5 rounded-xl shadow-lg border border-purple-100">
+                    <li class="bg-purple-50 p-5 rounded-xl shadow-lg border border-purple-100">
                         <h3 class="text-xl font-bold text-purple-800">4. Bentuk (Struktur)</h3>
-                        <p class="mt-2 text-gray-700">Struktur komposisi muzik yang boleh dibahagikan kepada bahagian yang mempunyai ciri-ciri melodi tersendiri (contoh: rangkap, korus).</p>
-                    </div>
+                        <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1 text-lg">
+                            <li><strong>Struktur</strong> atau susunan komposisi muzik.</li>
+                            <li>Dibahagikan kepada bahagian-bahagian seperti <strong>rangkap (verse)</strong> dan <strong>korus (chorus)</strong>.</li>
+                        </ul>
+                    </li>
 
                     <!-- 5. Harmoni -->
-                    <div class="bg-rose-50 p-5 rounded-xl shadow-lg border border-rose-100">
+                    <li class="bg-rose-50 p-5 rounded-xl shadow-lg border border-rose-100">
                         <h3 class="text-xl font-bold text-rose-800">5. Harmoni (Kord, Triads)</h3>
-                        <p class="mt-2 text-gray-700">Hasil gabungan dua atau lebih pic yang disusun menegak dan dinyanyikan atau dimainkan secara serentak. Ia mewujudkan bunyi yang lebih 'penuh'.</p>
-                    </div>
+                        <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1 text-lg">
+                            <li>Hasil gabungan <strong>dua atau lebih pic</strong> yang dimainkan secara <strong>serentak</strong>.</li>
+                            <li>Membentuk <strong>kord</strong> (cth: triads) dan mewujudkan bunyi yang 'penuh'.</li>
+                        </ul>
+                    </li>
 
                     <!-- 6. Ekspresi -->
-                    <div class="bg-orange-50 p-5 rounded-xl shadow-lg border border-orange-100">
+                    <li class="bg-orange-50 p-5 rounded-xl shadow-lg border border-orange-100">
                         <h3 class="text-xl font-bold text-orange-800">6. Ekspresi (Dinamik, Tempo, Artikulasi)</h3>
-                        <p class="mt-2 text-gray-700">Gabungan elemen dinamik (kuat/lembut), tempo (laju/perlahan) dan artikulasi (cara dimainkan) bunyi yang menghasilkan mud berbeza.</p>
-                    </div>
+                        <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1 text-lg">
+                            <li>Gabungan elemen yang menghasilkan <strong>'mud'</strong> atau perasaan berbeza.</li>
+                            <li>Merangkumi: <strong>Dinamik</strong> (kuat/lembut), <strong>Tempo</strong> (laju/perlahan), dan <strong>Artikulasi</strong> (cara bunyi dimainkan).</li>
+                        </ul>
+                    </li>
 
                     <!-- 7. Tekstur -->
-                    <div class="bg-gray-100 p-5 rounded-xl shadow-lg border border-gray-200 col-span-1 md:col-span-2">
+                    <li class="bg-gray-100 p-5 rounded-xl shadow-lg border border-gray-200">
                         <h3 class="text-xl font-bold text-gray-800">7. Tekstur (Monofoni dan Polifoni)</h3>
-                        <p class="mt-2 text-gray-700">Gabungan bunyi yang membentuk jalinan lapisan nipis dan tebal dalam muzik.
-                            <br>• <strong>Monofoni:</strong> Satu lapisan bunyi sahaja (seperti nyanyian solo tanpa iringan).
-                            <br>• <strong>Polifoni:</strong> Banyak lapisan bunyi yang berbeza dimainkan serentak.
-                        </p>
-                    </div>
-
-                </div>
+                        <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1 text-lg">
+                            <li>Jalinan lapisan bunyi (nipis atau tebal) dalam muzik.</li>
+                            <li><strong>Monofoni:</strong> Hanya <strong>satu lapisan</strong> bunyi (cth: nyanyian solo tanpa iringan).</li>
+                            <li><strong>Polifoni:</strong> <strong>Banyak lapisan</strong> bunyi yang berbeza dimainkan serentak.</li>
+                        </ul>
+                    </li>
+                </ul>
             </section>
 
-            <!-- ===== 2. SEKSYEN NOT MUZIK ===== -->
+            <!-- ===== 2. SEKSYEN NOT MUZIK (Infografik) ===== -->
             <section id="not" class="content-section space-y-6">
                 <h2 class="text-3xl font-bold text-teal-700 border-b-4 border-teal-200 pb-2">Not Muzik dan Tanda Rehat</h2>
                 <p class="text-lg text-gray-700">Mari kenali nama, bentuk, dan nilai (kiraan) bagi setiap not dan tanda rehat.</p>
                 
-                <!-- Jadual Not Muzik -->
-                <div class="overflow-x-auto bg-white rounded-lg shadow-lg">
-                    <table class="w-full text-left table-auto">
-                        <thead class="bg-teal-100">
-                            <tr>
-                                <th class="p-4 font-bold text-teal-800">Bentuk Not</th>
-                                <th class="p-4 font-bold text-teal-800">Nama Not</th>
-                                <th class="p-4 font-bold text-teal-800">Bentuk Tanda Rehat</th>
-                                <th class="p-4 font-bold text-teal-800">Nilai / Kiraan</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200">
-                            <tr class="hover:bg-gray-50">
-                                <td class="p-4 text-4xl">Semibref</td>
-                                <td class="p-4 text-lg font-semibold">Semibref</td>
-                                <td class="p-4 text-4xl">Rehat Semibref</td>
-                                <td class="p-4 text-lg font-bold">4</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50">
-                                <td class="p-4 text-4xl">Minim</td>
-                                <td class="p-4 text-lg font-semibold">Minim</td>
-                                <td class="p-4 text-4xl">Rehat Minim</td>
-                                <td class="p-4 text-lg font-bold">2</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50">
-                                <td class="p-4 text-4xl">Krocet</td>
-                                <td class="p-4 text-lg font-semibold">Krocet</td>
-                                <td class="p-4 text-4xl">Rehat Krocet</td>
-                                <td class="p-4 text-lg font-bold">1</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50">
-                                <td class="p-4 text-4xl">Kuaver</td>
-                                <td class="p-4 text-lg font-semibold">Kuaver</td>
-                                <td class_l="p-4 text-4xl">Rehat Kuaver</td>
-                                <td class_l="p-4 text-lg font-bold">1/2 (setengah)</td>
-                            </tr>
-                            <tr class_l="hover:bg-gray-50">
-                                <td_l="p-4 text-4xl">Semikuaver</td>
-                                <td_l="p-4 text-lg font-semibold">Semikuaver</td>
-                                <td_l="p-4 text-4xl">Rehat Semikuaver</td>
-                                <td_l="p-4 text-lg font-bold">1/4 (suku)</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Infografik Not Muzik -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                    
+                    <!-- Kad Semibref -->
+                    <div class="flex flex-col sm:flex-row items-center bg-teal-50 p-4 rounded-xl shadow-lg border border-teal-200 space-y-3 sm:space-y-0 sm:space-x-4">
+                        <div class="w-24 text-center">
+                            <svg width="60" height="90" viewBox="0 0 60 90" class="mx-auto">
+                                <ellipse cx="30" cy="70" rx="18" ry="12" stroke="black" stroke-width="4" fill="none"/>
+                            </svg>
+                            <p class="text-sm font-semibold">Not Semibref</p>
+                        </div>
+                        <div class="w-24 text-center">
+                            <svg width="60" height="90" viewBox="0 0 60 90" class="mx-auto">
+                                <line x1="10" y1="45" x2="50" y2="45" stroke="black" stroke-width="3"/>
+                                <rect x="15" y="45" width="30" height="12" fill="black"/>
+                            </svg>
+                            <p class="text-sm font-semibold">Rehat Semibref</p>
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <h3 class="text-3xl font-bold text-teal-900">Semibref</h3>
+                            <p class="text-xl text-gray-700">Nilai: <strong class="text-4xl text-black">4</strong> kiraan</p>
+                        </div>
+                    </div>
+
+                    <!-- Kad Minim -->
+                    <div class="flex flex-col sm:flex-row items-center bg-cyan-50 p-4 rounded-xl shadow-lg border border-cyan-200 space-y-3 sm:space-y-0 sm:space-x-4">
+                        <div class="w-24 text-center">
+                            <svg width="60" height="90" viewBox="0 0 60 90" class="mx-auto">
+                                <ellipse cx="30" cy="70" rx="18" ry="12" stroke="black" stroke-width="4" fill="none"/>
+                                <line x1="48" y1="70" x2="48" y2="20" stroke="black" stroke-width="4"/>
+                            </svg>
+                            <p class="text-sm font-semibold">Not Minim</p>
+                        </div>
+                        <div class="w-24 text-center">
+                            <svg width="60" height="90" viewBox="0 0 60 90" class="mx-auto">
+                                <line x1="10" y1="57" x2="50" y2="57" stroke="black" stroke-width="3"/>
+                                <rect x="15" y="45" width="30" height="12" fill="black"/>
+                            </svg>
+                            <p class="text-sm font-semibold">Rehat Minim</p>
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <h3 class="text-3xl font-bold text-cyan-900">Minim</h3>
+                            <p class="text-xl text-gray-700">Nilai: <strong class="text-4xl text-black">2</strong> kiraan</p>
+                        </div>
+                    </div>
+
+                    <!-- Kad Krocet -->
+                    <div class="flex flex-col sm:flex-row items-center bg-blue-50 p-4 rounded-xl shadow-lg border border-blue-200 space-y-3 sm:space-y-0 sm:space-x-4">
+                        <div class="w-24 text-center">
+                            <svg width="60" height="90" viewBox="0 0 60 90" class="mx-auto">
+                                <ellipse cx="30" cy="70" rx="18" ry="12" stroke="black" stroke-width="4" fill="black"/>
+                                <line x1="48" y1="70" x2="48" y2="20" stroke="black" stroke-width="4"/>
+                            </svg>
+                            <p class="text-sm font-semibold">Not Krocet</p>
+                        </div>
+                        <div class="w-24 text-center">
+                            <svg width="60" height="90" viewBox="0 0 60 90" class="mx-auto">
+                                <path d="M30 20 C 40 30, 20 40, 30 50 C 40 60, 20 70, 30 80" stroke="black" stroke-width="5" fill="none" />
+                            </svg>
+                            <p class="text-sm font-semibold">Rehat Krocet</p>
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <h3 class="text-3xl font-bold text-blue-900">Krocet</h3>
+                            <p class="text-xl text-gray-700">Nilai: <strong class="text-4xl text-black">1</strong> kiraan</p>
+                        </div>
+                    </div>
+
+                    <!-- Kad Kuaver -->
+                    <div class="flex flex-col sm:flex-row items-center bg-indigo-50 p-4 rounded-xl shadow-lg border border-indigo-200 space-y-3 sm:space-y-0 sm:space-x-4">
+                        <div class="w-24 text-center">
+                            <svg width="60" height="90" viewBox="0 0 60 90" class="mx-auto">
+                                <ellipse cx="30" cy="70" rx="18" ry="12" stroke="black" stroke-width="4" fill="black"/>
+                                <line x1="48" y1="70" x2="48" y2="20" stroke="black" stroke-width="4"/>
+                                <path d="M48 20 Q 65 30, 48 45" stroke="black" stroke-width="4" fill="none" />
+                            </svg>
+                            <p class="text-sm font-semibold">Not Kuaver</p>
+                        </div>
+                        <div class="w-24 text-center">
+                            <svg width="60" height="90" viewBox="0 0 60 90" class="mx-auto">
+                                <path d="M25,20 L 25,35 C 25,45 45,45 40,55" stroke="black" stroke-width="4" fill="none" />
+                            </svg>
+                            <p class="text-sm font-semibold">Rehat Kuaver</p>
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <h3 class="text-3xl font-bold text-indigo-900">Kuaver</h3>
+                            <p class="text-xl text-gray-700">Nilai: <strong class="text-4xl text-black">1/2</strong> kiraan</p>
+                        </div>
+                    </div>
+
+                    <!-- Kad Semikuaver -->
+                    <div class="flex flex-col sm:flex-row items-center bg-purple-50 p-4 rounded-xl shadow-lg border border-purple-200 space-y-3 sm:space-y-0 sm:space-x-4 lg:col-span-2">
+                        <div class="w-24 text-center">
+                            <svg width="60" height="90" viewBox="0 0 60 90" class="mx-auto">
+                                <ellipse cx="30" cy="70" rx="18" ry="12" stroke="black" stroke-width="4" fill="black"/>
+                                <line x1="48" y1="70" x2="48" y2="20" stroke="black" stroke-width="4"/>
+                                <path d="M48 20 Q 65 30, 48 45 M48 30 Q 65 40, 48 55" stroke="black" stroke-width="4" fill="none" />
+                            </svg>
+                            <p class="text-sm font-semibold">Not Semikuaver</p>
+                        </div>
+                        <div class="w-24 text-center">
+                            <svg width="60" height="90" viewBox="0 0 60 90" class="mx-auto">
+                                <path d="M25,20 L 25,35 C 25,45 45,45 40,55 M25,30 L 25,45 C 25,55 45,55 40,65" stroke="black" stroke-width="4" fill="none" />
+                            </svg>
+                            <p class="text-sm font-semibold">Rehat Semikuaver</p>
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <h3 class="text-3xl font-bold text-purple-900">Semikuaver</h3>
+                            <p class="text-xl text-gray-700">Nilai: <strong class="text-4xl text-black">1/4</strong> kiraan</p>
+                        </div>
+                    </div>
+
                 </div>
 
-                <!-- Video YouTube -->
+                <!-- Video YouTube (Tinggikan) -->
                 <h3 class="text-2xl font-bold text-teal-700 pt-4">Video: Nama dan Nilai Not Muzik</h3>
-                <div class="aspect-w-16 aspect-h-9 bg-black rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-black rounded-lg shadow-lg overflow-hidden">
+                    <!-- Menggunakan h-96 untuk saiz video yang lebih tinggi -->
                     <iframe 
-                        class="w-full h-full"
+                        class="w-full h-96"
                         src="https://www.youtube.com/embed/4lpjyqjRUQg" 
                         title="YouTube video player" 
                         frameborder="0" 
@@ -311,7 +392,7 @@
 
             </section>
 
-            <!-- ===== 4. SEKSYEN KUIZ ===== -->
+            <!-- ===== 4. SEKSYEN KUIZ (Logik Diubah) ===== -->
             <section id="kuiz" class="content-section space-y-6">
                 <h2 class="text-3xl font-bold text-yellow-700 border-b-4 border-yellow-300 pb-2">Kuiz Pantas Uji Minda!</h2>
                 
@@ -338,11 +419,7 @@
                         <!-- Pilihan jawapan akan dijana oleh JS -->
                     </div>
 
-                    <div id="feedback" class="text-center font-semibold text-lg mt-4"></div>
-
-                    <button id="nextButton" onclick="nextQuestion()" class="w-full bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-indigo-700 transition-all duration-300 hidden">
-                        Soalan Seterusnya &rarr;
-                    </button>
+                    <!-- Maklum balas dan butang 'Seterusnya' telah dialih keluar dari sini -->
                 </div>
 
                 <!-- Skrin Keputusan (Sembunyi) -->
@@ -353,6 +430,12 @@
                     <button onclick="startQuiz()" class="bg-green-500 text-white font-bold py-3 px-8 rounded-full shadow-lg text-xl hover:bg-green-600 transition-all duration-300 transform hover:scale-105">
                         Cuba Lagi!
                     </button>
+
+                    <!-- Bahagian baru untuk senarai jawapan -->
+                    <h4 class="text-2xl font-bold text-gray-800 mt-12 border-t-2 border-gray-300 pt-6">Semakan Jawapan</h4>
+                    <div id="resultsList" class="mt-6 text-left space-y-4 max-w-3xl mx-auto">
+                        <!-- Senarai jawapan akan dijana oleh JS -->
+                    </div>
                 </div>
             </section>
 
@@ -394,7 +477,7 @@
             activeTab = clickedButton;
         }
 
-        // ===== LOGIK KUIZ =====
+        // ===== LOGIK KUIZ (DIKEMAS KINI) =====
 
         const quizStartDiv = document.getElementById('quizStart');
         const quizContainerDiv = document.getElementById('quizContainer');
@@ -404,17 +487,17 @@
         const quizImage = document.getElementById('quizImage');
         const quizQuestionH3 = document.getElementById('quizQuestion');
         const quizOptionsDiv = document.getElementById('quizOptions');
-        const feedbackDiv = document.getElementById('feedback');
-        const nextButton = document.getElementById('nextButton');
         const finalScoreP = document.getElementById('finalScore');
         const scoreMessageP = document.getElementById('scoreMessage');
+        const resultsListDiv = document.getElementById('resultsList'); // Div baru untuk senarai jawapan
 
         let allQuestions = [];
         let shuffledQuestions = [];
         let currentQuestionIndex = 0;
         let score = 0;
+        let quizResults = []; // Array baru untuk simpan jawapan
 
-        // --- Bank Soalan (30 Soalan) ---
+        // --- Bank Soalan (Sama seperti sebelum ini) ---
         function setupQuestions() {
             allQuestions = [
                 // Elemen Muzik (10 soalan)
@@ -558,7 +641,7 @@
                     question: "Alat muzik ini sangat popular di majlis perkahwinan Melayu.",
                     options: ["Kompang", "Rebana", "Tabla", "Gedombak"],
                     answer: "Kompang",
-                    image: "https://ecentral.my/wp-content/uploads/2024/11/Kompang-1.jpeg"
+                    image: "https.://ecentral.my/wp-content/uploads/2024/11/Kompang-1.jpeg"
                 },
                 {
                     question: "Alat tiupan ini digunakan dalam muzik Nobat Diraja.",
@@ -576,13 +659,13 @@
                     question: "Alat muzik yang berasal dari Timur Tengah ini dipanggil...",
                     options: ["Gambus", "Sape", "Rebab", "Kecapi"],
                     answer: "Gambus",
-                    image: "https://ecentral.my/wp-content/uploads/2024/11/Gambus.webp"
+                    image: "https.://ecentral.my/wp-content/uploads/2024/11/Gambus.webp"
                 },
                 {
                     question: "Alat gendang besar ini dipukul dengan tapak tangan.",
                     options: ["Rebana", "Kompang", "Gedombak", "Tabla"],
                     answer: "Rebana",
-                    image: "https://ecentral.my/wp-content/uploads/2024/11/Rebana.jpeg"
+                    image: "https.://ecentral.my/wp-content/uploads/2024/11/Rebana.jpeg"
                 }
             ];
         }
@@ -596,12 +679,13 @@
             return array;
         }
 
-        // Fungsi mula kuiz
+        // Fungsi mula kuiz (Kemas kini)
         function startQuiz() {
             setupQuestions(); // Pastikan bank soalan segar setiap kali mula
             shuffledQuestions = shuffleArray([...allQuestions]).slice(0, 30); // Ambil 30 soalan rawak
             currentQuestionIndex = 0;
             score = 0;
+            quizResults = []; // Kosongkan senarai jawapan lepas
 
             quizStartDiv.style.display = 'none';
             quizResultsDiv.style.display = 'none';
@@ -610,12 +694,10 @@
             loadQuestion();
         }
 
-        // Fungsi muat soalan
+        // Fungsi muat soalan (Kemas kini)
         function loadQuestion() {
             // Bersihkan keadaan sebelumnya
             quizOptionsDiv.innerHTML = '';
-            feedbackDiv.textContent = '';
-            nextButton.style.display = 'none';
             quizImage.style.display = 'none';
 
             // Dapatkan data soalan semasa
@@ -642,44 +724,36 @@
                 const button = document.createElement('button');
                 button.textContent = option;
                 button.classList.add('quiz-option', 'w-full', 'bg-white', 'border-2', 'border-indigo-300', 'text-indigo-800', 'font-semibold', 'p-4', 'rounded-lg', 'shadow-sm', 'hover:bg-indigo-50');
-                button.onclick = () => selectAnswer(option, questionData.answer, button);
+                // Tukar 'onclick' untuk hanya panggil selectAnswer
+                button.onclick = () => selectAnswer(option, questionData.answer);
                 quizOptionsDiv.appendChild(button);
             });
         }
 
-        // Fungsi pilih jawapan
-        function selectAnswer(selectedOption, correctAnswer, clickedButton) {
-            // Matikan semua butang
-            const allOptionButtons = quizOptionsDiv.querySelectorAll('button');
-            allOptionButtons.forEach(btn => {
-                btn.disabled = true;
-                // Tunjukkan jawapan betul
-                if (btn.textContent === correctAnswer) {
-                    btn.classList.add('correct');
-                }
-            });
-
-            // Semak jawapan
-            if (selectedOption === correctAnswer) {
+        // Fungsi pilih jawapan (Kemas kini)
+        function selectAnswer(selectedOption, correctAnswer) {
+            // Semak jawapan dan tambah markah
+            const isCorrect = selectedOption === correctAnswer;
+            if (isCorrect) {
                 score++;
-                feedbackDiv.textContent = 'Betul! Tahniah!';
-                feedbackDiv.classList.add('text-green-600');
-                feedbackDiv.classList.remove('text-red-600');
-            } else {
-                clickedButton.classList.add('incorrect');
-                feedbackDiv.textContent = `Salah. Jawapan yang betul ialah: ${correctAnswer}`;
-                feedbackDiv.classList.add('text-red-600');
-                feedbackDiv.classList.remove('text-green-600');
             }
 
-            // Kemas kini markah semasa
+            // Simpan keputusan
+            quizResults.push({
+                question: shuffledQuestions[currentQuestionIndex].question,
+                selected: selectedOption,
+                correct: correctAnswer,
+                isCorrect: isCorrect
+            });
+
+            // Kemas kini paparan markah (pilihan, untuk maklum balas segera)
             currentScoreSpan.textContent = `Markah: ${score}`;
             
-            // Tunjukkan butang "Seterusnya"
-            nextButton.style.display = 'block';
+            // Terus ke soalan seterusnya
+            nextQuestion();
         }
 
-        // Fungsi soalan seterusnya
+        // Fungsi soalan seterusnya (Kemas kini)
         function nextQuestion() {
             currentQuestionIndex++;
             if (currentQuestionIndex < shuffledQuestions.length) {
@@ -689,10 +763,11 @@
             }
         }
 
-        // Fungsi papar keputusan
+        // Fungsi papar keputusan (Kemas kini)
         function showResults() {
             quizContainerDiv.style.display = 'none';
             quizResultsDiv.style.display = 'block';
+            resultsListDiv.innerHTML = ''; // Bersihkan senarai keputusan lama
 
             finalScoreP.textContent = `${score} / 30`;
             
@@ -708,8 +783,31 @@
                 message = "Jangan putus asa. Ulangkaji nota dan cuba sekali lagi!";
             }
             scoreMessageP.textContent = message;
+
+            // Jana senarai semakan jawapan
+            quizResults.forEach((result, index) => {
+                const resultDiv = document.createElement('div');
+                resultDiv.classList.add('p-4', 'rounded-lg', 'border');
+                
+                let content = `
+                    <h4 class="font-bold text-lg">${index + 1}. ${result.question}</h4>
+                    <p>Jawapan Anda: <span class="font-semibold">${result.selected}</span></p>
+                `;
+                
+                if (result.isCorrect) {
+                    resultDiv.classList.add('bg-green-100', 'border-green-300');
+                    content += `<p class="text-green-700 font-bold">&#10003; Betul!</p>`;
+                } else {
+                    resultDiv.classList.add('bg-red-100', 'border-red-300');
+                    content += `<p class="text-red-700 font-bold">&#10007; Salah. Jawapan sebenar: ${result.correct}</p>`;
+                }
+                
+                resultDiv.innerHTML = content;
+                resultsListDiv.appendChild(resultDiv);
+            });
         }
 
     </script>
 </body>
 </html>
+
